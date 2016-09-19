@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+        <title>splits</title>
+        <meta http-equiv="Cache-Control" content="no-cache"/>
+        <meta name="googlebot" content="noindex" />
+        <meta name="robots" content="noindex" />
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="box">
+        <header class="row fit">
+            <section class="cell fill">
+                <input type="url" placeholder="url" data-frame="1">
+            </section>
+            <section class="cell fill">
+                <input type="url" placeholder="url" data-frame="2">
+            </section>
+        </header>
+        <main class="row fill">
+            <section class="cell fill">
+                <iframe src="about:blank" data-frame="1"></iframe>
+            </section>
+            <section class="cell fill">
+                <iframe src="about:blank" data-frame="2"></iframe>
+            </section>
+        </main>
+        <script>
+[].forEach.call(document.querySelectorAll('input[data-frame]'), function(item) {
+    item.addEventListener('keyup', function(e) {
+        const dataFrame = e.target.getAttribute('data-frame');
+        document.querySelector(`iframe[data-frame="${dataFrame}"]`).src = e.target.value;
+        console.log(e.target.value);
+    });
+});
+        </script>
+    </body>
+</html>
